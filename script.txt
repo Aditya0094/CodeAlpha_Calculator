@@ -1,0 +1,73 @@
+let display = document.getElementById("display");
+let currentInput = "";
+let operator = "";
+let previousInput = "";
+
+function updateDisplay() {
+     
+    display.textContent = previousInput + operator + currentInput || "0";
+}
+
+function clearDisplay() {
+    currentInput = "";
+    operator = "";
+    previousInput = "";
+    display.textContent = "0";
+}
+
+function appendNumber(number) {
+    currentInput += number;
+    updateDisplay();  
+}
+
+function appendOperator(op) {
+    if (currentInput === "") return;
+    if (previousInput !== "") calculateResult();
+    operator = ` ${op} `;
+    previousInput = currentInput;
+    currentInput = "";
+    updateDisplay();   
+}
+
+function appendDecimal() {
+    if (!currentInput.includes(".")) {
+        currentInput += ".";
+        updateDisplay();
+    }
+}
+
+function calculateResult() {
+    if (operator === "" || currentInput === "") return;
+    let result;
+    const num1 = parseFloat(previousInput);
+    const num2 = parseFloat(currentInput);
+    
+    switch (operator.trim()) {
+        case "+":
+            result = num1 + num2;
+            break;
+        case "-":
+            result = num1 - num2;
+            break;
+        case "*":
+            result = num1 * num2;
+            break;
+        case "/":
+            result = num2 === 0 ? "Error" : num1 / num2;
+            break;
+        default:
+            return;
+    }
+
+    display.textContent = result;
+    currentInput = result.toString();
+    previousInput = "";
+    operator = "";
+}
+
+function cancelEntry() {
+    if (currentInput.length > 0) {
+        currentInput = currentInput.slice(0, -1);   
+        updateDisplay();   
+    }
+}
