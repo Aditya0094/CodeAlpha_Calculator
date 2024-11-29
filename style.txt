@@ -1,0 +1,77 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.calculator {
+    background-color: #222831;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 300px;
+}
+
+.display {
+    background-color: #393e46;
+    color: #eeeeee;
+    font-size: 2em;
+    padding: 20px;
+    text-align: right;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.btn {
+    background-color: #00adb5;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn.operator {
+    background-color: #f38181;
+}
+
+.btn.clear {
+    background-color: #ff2e63;
+}
+
+.btn.zero {
+    grid-column: span 2;
+}
+
+.btn:hover {
+    background-color: #008891;
+}
+
+.btn.operator:hover {
+    background-color: #e94e77;
+}
+
+.btn.clear:hover {
+    background-color: #e63946;
+}
+
+.btn.cancel {
+    background-color: #ffa62b;  /* Orange color for visibility */
+}
+
+.btn.cancel:hover {
+    background-color: #e58e26;
+}
